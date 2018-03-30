@@ -1,0 +1,23 @@
+body {
+  padding-top: 30px;
+}
+
+.message {
+  background-color: #F2F2F2;
+  border:2px solid #FFFFFF;
+  border-width: thin;
+  display: inline-block;
+  float: center;
+  text-align: center;
+  border-radius: 6px;
+  width: 85.5%;
+  padding: 15px 0;
+  margin-top: 2%;
+  margin-left: 7.2%;
+  margin-right: 7.5%;
+}
+
+.ion-ios-close-outline {
+  float:right;
+  margin-right: 3%;
+}

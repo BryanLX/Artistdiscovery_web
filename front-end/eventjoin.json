@@ -1,0 +1,33 @@
+[{
+  "eventid": "1",
+  "username": "user1",
+  "ifVehicle": true,
+  "peopleAttend": 2,
+  "seatAvailable": 2,
+  "note": ""
+  },
+  {
+    "eventid": "2",
+    "username": "user1",
+    "ifVehicle": false,
+    "peopleAttend": 0,
+    "seatAvailable": 0,
+    "note": ""
+  },
+  {
+      "eventid": "1",
+      "username": "user2",
+      "ifVehicle": true,
+      "peopleAttend": 2,
+      "seatAvailable": 2,
+      "note": ""
+    },
+    {
+        "eventid": "3",
+        "username": "user3",
+        "ifVehicle": true,
+        "peopleAttend": 2,
+        "seatAvailable": 2,
+        "note": ""
+      }
+]

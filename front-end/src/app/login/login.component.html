@@ -1,0 +1,29 @@
+<form id='login_frame' (ngSubmit)="authorization()">
+  <div class='container' id='log_container'>
+      <div id="login">
+        <div class="form-row">
+          <div class="col-sm-6">
+            <img class="resize" src="../../assets/smalllogo.png" id="login_logo">
+          </div>
+          <div class="col-sm-6" >
+            <div id="login_heading">
+                <h2  id='login_title' class=".form-control-plaintext">Log In</h2>
+                <div class="alert alert-danger" role="alert" *ngIf="alert_msg.length>0" id="signin_alert"><strong>Alert: </strong>{{alert_msg}}</div>
+                <br>
+                <div class="input-group input-group-lg">
+                  <span class="input-group-addon"><span class="ion-android-person"></span></span>
+                  <input type="text" ng-model='username' class="form-control" placeholder="UserName" [(ngModel)]='user.username' name='user.username' id='login_user'>
+                </div>
+                <br>
+                <div class="input-group input-group-lg" id='pass_box'>
+                  <span class="input-group-addon"><span class="ion-locked"></span></span>
+                  <input type="password" class="form-control" placeholder="Password" [(ngModel)]='user.password' name='user.password' id='login_pass'>
+                </div>
+                <br>
+                <button type="submit" class="float" id="log_button">Login</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</form>

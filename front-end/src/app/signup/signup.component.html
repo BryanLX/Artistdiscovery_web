@@ -1,0 +1,57 @@
+<div class="container" id='signup_container'>
+  <div id="signup">
+  <!-- <div class="row"> -->
+    <form action="#" (ngSubmit)='check_signup()'>
+      <div class="row">
+          <h3 id="signup_title" align="center">Membership Register</h3>
+          <br/>
+          <img src="../../assets/smalllogo.png" id="signup_small_logo">
+      </div>
+      <br/>
+      <div class="input-group input-group-lg">
+          <span class="input-group-addon"><span class="ion-android-person"></span></span>
+          <input type="text" class="form-control" placeholder="First Name" id='signup_first' [(ngModel)]='member.firstName' name='member.firstName' required>
+          <span class="input-group-addon"><span class="ion-android-person"></span></span>
+          <input type="text" class="form-control" placeholder="Last Name" id='signup_last' [(ngModel)]='member.lastName' name='member.lastName' required>
+      </div><br/>
+
+      <div class="input-group input-group-lg">
+        <span class="input-group-addon"><span class="ion-ios-telephone"></span></span>
+        <input type="phone" class="form-control" placeholder="Phone Number" id='signup_phone' [(ngModel)]='member.phone' name='member.phone' required>
+      </div><br/>
+
+      <div class="input-group input-group-lg">
+        <span class="input-group-addon"><span class="ion-android-person"></span></span>
+        <input type="email" class="form-control" placeholder="Email Address" id='signup_email' [(ngModel)]='member.email' name='member.email' required>
+      </div><br/>
+
+      <div class="input-group input-group-lg">
+        <span class="input-group-addon"><span class="ion-android-person"></span></span>
+        <input type="text" class="form-control" placeholder="Username" id='signup_user' [(ngModel)]='member.username' name='member.username' required>
+      </div><br/>
+
+      <div class="input-group input-group-lg">
+        <span class="input-group-addon"><span class="ion-locked"></span></span>
+        <input type="password" class="form-control" placeholder="Password" id='signup_pass' [(ngModel)]='member.activationToken' name='member.activationToken' required>
+      </div><br/>
+
+      <div class="input-group input-group-lg">
+        <span class="input-group-addon"><span class="ion-locked"></span></span>
+        <input type="password" class="form-control" placeholder="Repeat Password" id='signup_repeat_pass' [(ngModel)]='repeat_pass' name='repeat_pass' required>
+      </div><br/>
+
+      <div class="alert alert-danger" role="alert" *ngIf="alert_msg.length>0" id="signup_alert"><strong>Alert: </strong>{{alert_msg}}</div>
+
+      <div class='form-group row'>
+      <button type="submit" class="float" id='sign_button'>Submit</button>
+      <input type="reset" class="float" value="Reset" id='cancel_button'>
+      </div>
+    </form>
+
+    <!-- <div class="col-sm-6">
+      <img src="./image/smalllogo.jpg" id="signup_logo">
+    </div> -->
+
+  <!-- </div> -->
+  </div>
+</div>

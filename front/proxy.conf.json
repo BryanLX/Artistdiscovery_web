@@ -1,0 +1,10 @@
+{
+  "/proxy": {
+    "target": "https://maps.googleapis.com",
+    "secure": false,
+    "pathRewrite": {
+      "^/api": ""
+    },
+  "changeOrigin": true
+  }
+}

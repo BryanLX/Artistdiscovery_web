@@ -1,0 +1,11 @@
+.eventinfo.container {
+    border-radius: 5px;
+    background-color: #f8f8f8;
+    padding: 20px;
+    width:85%;
+    margin: 0 auto;
+}
+#signup_small_logo{
+    width: 15%;
+    height: 15%;
+}

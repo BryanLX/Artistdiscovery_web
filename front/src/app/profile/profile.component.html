@@ -1,0 +1,154 @@
+<br/>
+<br/>
+<div class="container" >
+    <div class="col">
+          <ul class="nav nav-tabs align-items-center" >
+              <li class="nav-item">
+                  <a href="" data-target="#message" data-toggle="tab" class="nav-link active"> Message</a>
+              </li>
+              <li class="nav-item">
+                  <a href="" data-target="#information" data-toggle="tab" class="nav-link">Profile</a>
+              </li>
+              <li class="nav-item">
+                  <a href="" data-target="#password" data-toggle="tab" class="nav-link">Password</a>
+              </li>
+              <li class="nav-item">
+                  <a href="" data-target="#event" data-toggle="tab" class="nav-link">Event</a>
+              </li>
+          </ul>
+          <div class="tab-content py-4">
+              <div class="tab-pane active" id="message">
+                <h3>Messages</h3>
+                <ul class="list-group">
+                  <li *ngFor="let message of messages" class="list-group-item">{{message.message}}</li>
+                </ul>
+              </div>
+              <div class="tab-pane" id="information" style="overflow:scrollbar">
+                <form role="form">
+                    <h1 style="text-align:center">{{inputUser.username}}</h1>
+                    <div class="alert alert-danger" role="alert" *ngIf="alert_msg.length>0" id="signin_alert"><strong>Alert: </strong>{{alert_msg}}</div>
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label form-control-label" >First name</label>
+                        <div class="col-lg-9">
+                            <input class="form-control" type="text"  [(ngModel)]="inputUser.firstName" name='inputUser.firstName' >
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label form-control-label">Last name</label>
+                        <div class="col-lg-9">
+                            <input class="form-control" type="text" [(ngModel)]="inputUser.lastName" name='inputUser.lastName' >
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label form-control-label">Email</label>
+                        <div class="col-lg-9">
+                            <input class="form-control" type="email" [(ngModel)]="inputUser.email" name='inputUser.email' >
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label form-control-label">Phone</label>
+                        <div class="col-lg-9">
+                            <input class="form-control" type="text" [(ngModel)]="inputUser.phone" name='inputUser.phone' >
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label form-control-label">Social Media</label>
+                        <div class="col-lg-9">
+                            <input class="form-control" type="text" [(ngModel)]="inputUser.socialMedia" name='inputUser.socialMedia'>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label form-control-label"></label>
+                        <div class="col-lg-9">
+
+                            <input type="button" class="btn btn-primary" value="Save Changes" (click)="saveChange()">
+                            <input type="button" class="btn btn-secondary" value="Cancel" (click)="reset()">
+                        </div>
+                    </div>
+                </form>
+
+              </div>
+
+
+
+
+
+              <div class="tab-pane" id="password">
+                <h1 style="text-align:center">{{inputUser.username}}</h1>
+                <div class="alert alert-danger" role="alert" *ngIf="alert_msg.length>0" id="signin_alert"><strong>Alert: </strong>{{alert_msg}}</div>
+                <div class="form-group row">
+                    <label class="col-lg-3 col-form-label form-control-label">Set New Password</label>
+                    <div class="col-lg-9">
+                        <input class="form-control" type="password" [(ngModel)]="new_password" name='new_password'>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-lg-3 col-form-label form-control-label">Confirm password</label>
+                    <div class="col-lg-9">
+                        <input class="form-control" type="password" [(ngModel)]="confirm_password" name='confirm_password'>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-lg-3 col-form-label form-control-label"></label>
+                    <div class="col-lg-9">
+
+                        <input type="button" class="btn btn-primary" value="Set" (click)="setPassword()" style = "text-align: center;" >
+                        <input type="reset" class="btn btn-secondary" value="Cancel">
+                    </div>
+                </div>
+
+
+
+
+              </div>
+              <div class="tab-pane" id="event">
+                <h5> Events Joined </h5>
+                <ul class="list-group" >
+                  <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let event of joinedEvents">
+                    <a (click)="router.navigate(['/map/'+event.eventid])"> {{event.name}} </a>
+                    <button type="button right-align" class="btn btn-danger" (click)="quitEvent(event.eventid)"><span class="ion-android-close"></span></button>
+                  </li>
+                </ul>
+              </div>
+          </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    <!-- <div class="container">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Hello! {{user.firstName}} {{user.lastName}}.</h4>
+        <h6 class="card-subtitle mb-2 text-muted">{{user.email}}</h6>
+        <hr/>
+        <h4> Events Joined </h4>
+        <ul class="list-group">
+          <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let event of joinedEvents">
+            <a href="map/{{event._id}}"> {{event.name}} </a>
+            <button type="button right-align" class="btn btn-danger" (click)="deleteJoinEvents"><span class="ion-android-close"></span></button>
+          </li>
+        </ul>
+
+        <br/>
+        <h4> Events Host </h4>
+        <ul class="list-group">
+          <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let event of joinedEvents">
+            <a href="map/{{event._id}}"> {{event.name}} </a>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+    </div> -->
+
+
+
+</div>

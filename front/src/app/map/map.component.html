@@ -1,0 +1,63 @@
+<div class="detaileventframe">
+  <div class="row"   top="50%" left= "50%">
+    <div class="column1">
+      <div class="row3">
+        <div class="dropdown" >
+          <button class="dropbtn">
+            <a *ngIf="event != null" class="nav-link"><span class="ion-navicon-round"></span> {{event.name}}</a>
+          </button>
+          <div class="dropdown-content" id = "dropcontent"*ngIf="event != null" >
+            <a class="button-a"*ngFor="let day of event.description; let i = index" (click)="changeDescriptionIndex(i)">Day {{i + 1}}</a>
+          </div>
+        </div>
+        <div *ngIf="event != null" id = "text" style="height:60%">
+           {{event.description[descriptionIndex]}}
+        </div>
+      </div>
+
+      <div class="row2">
+        <button class="button" (click)="joinEvent()">Sign Up for This Event</button>
+      </div>
+    </div>
+    <div class="column1">
+      <div class="row4" style="width:100%">
+          <div class="btn-group" data-toggle="buttons" style="width:100%">
+            <label class="btn btn-outline-dark btn-xs" style="width:33.33%">
+              <input type="radio" autocomplete="off">
+              <a class="nav-link" (click)="getRestaurant()"><span class="ion-android-restaurant"></span></a>
+            </label>
+            <label class="btn btn-outline-dark btn-xs" style="width:33.33%">
+              <input type="radio" autocomplete="off">
+              <a class="nav-link" (click)="getShoppingMall()"><span class="ion-bag"></span> </a>
+            </label>
+            <label class="btn btn-outline-dark btn-xs" style="width:33.33%">
+              <input type="radio" autocomplete="off">
+              <a class="nav-link" (click)="getCafe()"><span class="ion-coffee"></span></a>
+            </label>
+        </div>
+      </div>
+      <br>
+      <div class="row5" >
+        <div *ngIf="event != null" class="column div-map" >
+          <agm-map [latitude]="event.destLat" [longitude]="event.destLng">
+            <!-- <agm-marker [latitude]="event.destLat" [longitude]="event.destLng"></agm-marker> -->
+            <agm-direction *ngIf="event" [origin]="{lat: event.departLat, lng: event.departLng}" [destination]="{lat: event.destLat, lng: event.destLng}"></agm-direction>
+            <agm-marker *ngFor="let rmarker of restaurant_markers" [latitude]="rmarker.lat" [longitude]="rmarker.lng">
+              <agm-snazzy-info-window [closeWhenOthersOpen]="true">
+                    <ng-template>
+                      My first Snazzy Info Window!
+                    </ng-template>
+              </agm-snazzy-info-window>
+            </agm-marker>
+            <agm-marker *ngFor="let mmarker of mall_markers" [latitude]="mmarker.lat" [longitude]="mmarker.lng"></agm-marker>
+            <agm-marker *ngFor="let cmarker of cafe_markers" [latitude]="cmarker.lat" [longitude]="cmarker.lng"></agm-marker>
+            <!-- <agm-marker *ngFor="let rmarker of restaurant_markers" [latitude]="rmarker.lat" [longitude]="rmarker.lng"></agm-marker> -->
+          </agm-map>
+        </div>
+        <p class="card-text text-right">
+          <a *ngIf="event._id" href="/peopleattend/{{event._id}}"><small class="text-muted">Who Attend?</small></a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

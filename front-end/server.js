@@ -11,6 +11,7 @@ const api = require('./server/routes/api');
 
 
 
+log("sdsds")
 
 // passport
 var passport = require('passport');
@@ -37,6 +38,7 @@ app.use(bodyParser.urlencoded({ extended: false}));
 app.use(express.static(path.join(__dirname, 'dist')));
 
 // API location
+
 app.use('/api', api);
 // app.use('/api', proxy({target: 'https://maps.googleapis.com', changeOrigin: true}));
 

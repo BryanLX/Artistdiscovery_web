@@ -163,6 +163,7 @@ export class DataService {
 
 
   getEvents(){
+    // console.log("hey")
     return this._http.get("api/events")
       .map(result => this.result = result.json().data)
   }

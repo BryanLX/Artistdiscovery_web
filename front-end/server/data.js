@@ -3,6 +3,15 @@ let passportLocalMongoose = require('passport-local-mongoose');
 let Schema = mongoose.Schema;
 let bcrypt = require('bcryptjs');
 
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/roadtrippers";
+var url2 = "mongodb://localhost:27017/social";
+
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  console.log("Database created!");
+  db.close();
+});
 
 
 let eventSchema = new Schema({
@@ -149,6 +158,53 @@ let messageSchema = new Schema({
     collection: 'messages'
 });
 
+
+let userSchema = new Schema({
+    id: {
+        type: Number,
+        required: true
+    },
+    name: {
+        // type: Date,
+        type: String,
+        required: true
+    },
+    screen_name: {
+        type: String,
+        required: true
+    },
+    description: {
+        type: String,
+        required: true
+    },
+    location: {
+        type: String,
+        required: true
+    },
+    url: {
+        type: String,
+        required: true
+    },
+    followers_count: {
+        type: Number,
+        required: true
+    },
+    friends_count:{
+        type: Number,
+        require: true
+    },
+    lang:{
+        // type: File,
+        type: String,
+        required: true
+    },
+    profile_background_image_url :{
+        type: String,
+        required: false,
+    }
+}, {
+    collection: 'users'
+});
 // memberSchema.plugin(passportLocalMongoose, {
 //     usernameField: 'UTmail'
 // });
@@ -169,7 +225,8 @@ let schema = {
     'Member': mongoose.model('members', memberSchema),
     'EventInfo': mongoose.model('eventInfo', eventInfoSchema),
     'Event': mongoose.model('events', eventSchema),
-    'Message': mongoose.model('messages', messageSchema)
+    'Message': mongoose.model('messages', messageSchema),
+    'Users': mongoose.model('users', userSchema)
 };
 module.exports = schema;
 
@@ -316,7 +373,15 @@ module.exports.Event.checkEventExistence = function(hostname,name,callback){
 }
 
 
+// ================== Users  RELATED ========================
+module.exports.Users.getAccountById = function(id,callback){
+    schema.Users.findById(id,callback);
+}
 
+// load all the events and fill for events.html
+module.exports.Users.loadAllUsers = function(callback){
+    schema.Users.find({},callback);
+}
 
 
 

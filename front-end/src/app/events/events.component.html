@@ -3,37 +3,43 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <h2 id="filter"><span class="ion-ios-color-filter"></span> Filter</h2>
+          <br><br>
           <h5 >Lanague</h5>
           <select class="selectpicker">
           <option>English</option>
           <option>French</option>
           <option>Japense</option>
           </select>
-
+          <br><br>
           <h5 >Followers</h5>
           <select class="selectpicker">
           <option>0-150</option>
           <option>150-1000</option>
           <option>1000+</option>
           </select>
-
-          <h5 >Lanague</h5>
+          <br><br>
+          <h5 >Location</h5>
           <select class="selectpicker">
-          <option>English</option>
-          <option>French</option>
-          <option>Japense</option>
+          <option>Canada</option>
+          <option>America</option>
+          </select>
+          <br><br>
+          <br><br>
+          <h2 id="sort"> Sorted by</h2>
+          <br><br>
+          <select class="selectpicker">
+          <option>Followers: from low to high</option>
+          <option>Followers: from high to low</option>
+          <option>Friends: from low to high</option>
+          <option>Friends: from high to low</option>
+          <option>Create Time: from early to late</option>
+          <option>Create Time: from late to early</option>
           </select>
 
-          <h5 >Lanague</h5>
-          <select class="selectpicker">
-          <option>English</option>
-          <option>French</option>
-          <option>Japense</option>
-          </select>
-
-
-          <h2 id="sort"><span class="ion-ios-color-filter"></span> Sorted by</h2>
-
+            <br><br>
+            <br><br>
+            <br><br>
+          <button type="button" class="btn btn-primary btn-lg btn-block">Apply Changes</button>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h2 ><span class="ion-monitor"></span> Twitter Monitor</h2>
@@ -61,142 +67,45 @@
             </div>
           </div>
 
-          <h2 class="sub-header">Section title</h2>
+          <h2 class="sub-header">Artist list</h2>
           <div class="table-responsive">
-            <table class="table table-striped">
+            <table class="table table-striped" id="artistlist">
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                  <th>Header</th>
+                  <th>Username</th>
+                  <th>Followers</th>
+                  <th>Growth</th>
+                  <th>Contact Information</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1,001</td>
-                  <td>Lorem</td>
-                  <td>ipsum</td>
-                  <td>dolor</td>
-                  <td>sit</td>
-                </tr>
-                <tr>
-                  <td>1,002</td>
-                  <td>amet</td>
-                  <td>consectetur</td>
-                  <td>adipiscing</td>
-                  <td>elit</td>
-                </tr>
-                <tr>
-                  <td>1,003</td>
-                  <td>Integer</td>
-                  <td>nec</td>
-                  <td>odio</td>
-                  <td>Praesent</td>
-                </tr>
-                <tr>
-                  <td>1,003</td>
-                  <td>libero</td>
-                  <td>Sed</td>
-                  <td>cursus</td>
-                  <td>ante</td>
-                </tr>
-                <tr>
-                  <td>1,004</td>
-                  <td>dapibus</td>
-                  <td>diam</td>
-                  <td>Sed</td>
-                  <td>nisi</td>
-                </tr>
-                <tr>
-                  <td>1,005</td>
-                  <td>Nulla</td>
-                  <td>quis</td>
-                  <td>sem</td>
-                  <td>at</td>
-                </tr>
-                <tr>
-                  <td>1,006</td>
-                  <td>nibh</td>
-                  <td>elementum</td>
-                  <td>imperdiet</td>
-                  <td>Duis</td>
-                </tr>
-                <tr>
-                  <td>1,007</td>
-                  <td>sagittis</td>
-                  <td>ipsum</td>
-                  <td>Praesent</td>
-                  <td>mauris</td>
-                </tr>
-                <tr>
-                  <td>1,008</td>
-                  <td>Fusce</td>
-                  <td>nec</td>
-                  <td>tellus</td>
-                  <td>sed</td>
-                </tr>
-                <tr>
-                  <td>1,009</td>
-                  <td>augue</td>
-                  <td>semper</td>
-                  <td>porta</td>
-                  <td>Mauris</td>
-                </tr>
-                <tr>
-                  <td>1,010</td>
-                  <td>massa</td>
-                  <td>Vestibulum</td>
-                  <td>lacinia</td>
-                  <td>arcu</td>
-                </tr>
-                <tr>
-                  <td>1,011</td>
-                  <td>eget</td>
-                  <td>nulla</td>
-                  <td>Class</td>
-                  <td>aptent</td>
-                </tr>
-                <tr>
-                  <td>1,012</td>
-                  <td>taciti</td>
-                  <td>sociosqu</td>
-                  <td>ad</td>
-                  <td>litora</td>
-                </tr>
-                <tr>
-                  <td>1,013</td>
-                  <td>torquent</td>
-                  <td>per</td>
-                  <td>conubia</td>
-                  <td>nostra</td>
-                </tr>
-                <tr>
-                  <td>1,014</td>
-                  <td>per</td>
-                  <td>inceptos</td>
-                  <td>himenaeos</td>
-                  <td>Curabitur</td>
-                </tr>
-                <tr>
-                  <td>1,015</td>
-                  <td>sodales</td>
-                  <td>ligula</td>
-                  <td>in</td>
-                  <td>libero</td>
-                </tr>
+                <div *ngFor="let user of users">
+                  <td> {{user.name}} </td>
+                  <td> {{user.name}} </td>
+                  <td> {{user.name}} </td>
+                  <td> {{user.name}} </td>
+                  <td> {{user.name}} </td>
+                </div>
               </tbody>
             </table>
+          </div>
+
+          <h2 class="sub-header">Interesting tweets</h2>
+          <div class="table-responsive">
+            <table class="table table-striped" id="tweets">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Tweets Texts</th>
+                  <th>By Who</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+
           </div>
         </div>
       </div>
     </div>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-        <script src="../../dist/js/bootstrap.min.js"></script>
-        <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-        <script src="../../assets/js/vendor/holder.min.js"></script>
-        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-        <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>

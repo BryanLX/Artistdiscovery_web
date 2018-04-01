@@ -7,6 +7,7 @@ const jwt = require('jsonwebtoken');
 const User = db.Member;
 const Info = db.EventInfo;
 const Event = db.Event;
+const account = db.Users;
 const constants = require('../../config/constants');
 
 
@@ -234,32 +235,34 @@ router.get('/eventinfo/:username',(req,res,next)=>{
 // ============= FORMATTED EVENTINFO SEND !END! =========================
 
 
-
 // ===================== FORMATTED EVENT !END! =========================
 router.get('/events', (req, res) => {
-  db.Event.find({}).then((events) => {
-    response.data = events;
+  console.log('event aaaa')
+  res.status(111).send()
+  db.Users.find({}).then((Users) => {
+    response.data = Users;
     res.send(response);
   }).catch((e) => {
     res.status(400).send()
   })
 });
 
-router.get('/events/:id', (req, res) => {
-  let id = req.params.id
-  if (!ObjectId.isValid(id)) {
-    return res.status(404).send('ID is not valid')
-  }
-  db.Event.findById(id).then((event) => {
-    if (!event) {
-      return res.status(404).send()
-    }
-    response.data = event;
-    res.send(response)
-  }).catch((e) => {
-    res.status(400).send()
-  })
-});
+// router.get('/events/:id', (req, res) => {
+//   console.log('event aaaa')
+//   let id = req.params.id
+//   if (!ObjectId.isValid(id)) {
+//     return res.status(404).send('ID is not valid')
+//   }
+//   db.Event.findById(id).then((event) => {
+//     if (!event) {
+//       return res.status(404).send()
+//     }
+//     response.data = event;
+//     res.send(response)
+//   }).catch((e) => {
+//     res.status(400).send()
+//   })
+// });
 
 router.delete('/eventjoin/:user/:event', (req, res) => {
   let user = req.params.user;
@@ -278,78 +281,78 @@ router.delete('/eventjoin/:user/:event', (req, res) => {
 
 
 
-  router.get('/peopleattend/:id', (req, res) => {
-    var eventid = req.params.id
-    db.EventInfo.aggregate([
-      {
-        $lookup: {
-          from: "members" , localField: "username", foreignField: "username", as: "user_info"
-        }
-      },
-      {
-        $match: { "eventid": eventid }
+router.get('/peopleattend/:id', (req, res) => {
+  var eventid = req.params.id
+  db.EventInfo.aggregate([
+    {
+      $lookup: {
+        from: "members" , localField: "username", foreignField: "username", as: "user_info"
       }
-    ]).then((peopleAttend) => {
-      response.data = peopleAttend;
-      res.send(response);
-    }).catch((e) => {
-      res.status(400).send()
-    })
-  })
-
-  router.get('/peopleattend', (req, res) => {
-    db.EventInfo.find({}).then((peopleAttend) => {
-      response.data = peopleAttend;
-      res.send(response);
-    }).catch((e) => {
-      res.status(400).send()
-    })
-  })
-
-  router.get('/messages', (req, res) => {
-    db.Message.aggregate(
-      [
-        { $sort : { date : -1} }
-      ]
-    ).then((messages) => {
-      response.data = messages;
-      res.send(response);
-    }).catch((e) => {
-      res.status(400).send()
-    })
-  })
-
-
-  router.post('/messages', (req,res) => {
-    if (!req.body.message_id || ! req.body.message) {
-      response.message = "Please include an message_id and a message"
-      res.status(400).send(response);
-    } else {
-      db.Message.find({"message_id": req.body.message_id}).then((message) => {
-        if (message[0] == null) {
-          let info = {
-            message_id: req.body.message_id,
-            message: req.body.message,
-            date: new Date()
-          }
-          let message = new db.Message(info);
-          message.save(function(err, task) {
-            if (err){
-              res.status(400).send();
-            } else {
-              response.message = "Successfully post a message!"
-              response.data = []
-              res.send(response)
-            }
-          })
-
-        } else {
-          response.message = "The message id is already existed, please choose a different one."
-          res.status(400).send(response);
-        }
-      })
+    },
+    {
+      $match: { "eventid": eventid }
     }
+  ]).then((peopleAttend) => {
+    response.data = peopleAttend;
+    res.send(response);
+  }).catch((e) => {
+    res.status(400).send()
   })
+})
+
+router.get('/peopleattend', (req, res) => {
+  db.EventInfo.find({}).then((peopleAttend) => {
+    response.data = peopleAttend;
+    res.send(response);
+  }).catch((e) => {
+    res.status(400).send()
+  })
+})
+
+router.get('/messages', (req, res) => {
+  db.Message.aggregate(
+    [
+      { $sort : { date : -1} }
+    ]
+  ).then((messages) => {
+    response.data = messages;
+    res.send(response);
+  }).catch((e) => {
+    res.status(400).send()
+  })
+})
+
+
+router.post('/messages', (req,res) => {
+  if (!req.body.message_id || ! req.body.message) {
+    response.message = "Please include an message_id and a message"
+    res.status(400).send(response);
+  } else {
+    db.Message.find({"message_id": req.body.message_id}).then((message) => {
+      if (message[0] == null) {
+        let info = {
+          message_id: req.body.message_id,
+          message: req.body.message,
+          date: new Date()
+        }
+        let message = new db.Message(info);
+        message.save(function(err, task) {
+          if (err){
+            res.status(400).send();
+          } else {
+            response.message = "Successfully post a message!"
+            response.data = []
+            res.send(response)
+          }
+        })
+
+      } else {
+        response.message = "The message id is already existed, please choose a different one."
+        res.status(400).send(response);
+      }
+    })
+  }
+})
 
   router.delete('/messages/:message_id', (req,res) => {
     var message_id = req.params.message_id;
@@ -377,6 +380,8 @@ router.delete('/eventjoin/:user/:event', (req, res) => {
       res.status(400).send()
     })
   })
+// ===================== FORMATTED EVENT !END! =========================
+
 
 module.exports = router;
 //mongoimport --jsonArray --db roadtrippers --collection events --file events.json

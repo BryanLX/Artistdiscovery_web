@@ -15,16 +15,29 @@ export class EventsComponent implements OnInit {
   constructor(private _dataService: DataService,
               private router: Router) { }
   users: Array<any>;
+  current_user:any;
 
   ngOnInit() {
 
     this._dataService.getEvents()
         .subscribe(res => this.users = res);
+    this.current_user = null;
+
     }
 
-  // readMore(eventid){
-  //     this.router.navigate(['/map/' + eventid]);
-  // }
+  select_user(i) {
+    // this._dataService.getTwitterUser(id)
+    //     .subscribe(res => this.current_user = res);
+    // console.log(this.current_user);
+    this.current_user = this.users[i];
+
+    console.log(this.current_user);
+    //fake ONE
+
+
+    }
+
+
 
 
 }

@@ -11,7 +11,7 @@ const api = require('./server/routes/api');
 
 
 
-log("sdsds")
+
 
 // passport
 var passport = require('passport');

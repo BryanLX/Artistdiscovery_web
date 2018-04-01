@@ -247,6 +247,11 @@ module.exports.Member.getUserByUsername = function(username,callback){
     schema.Member.findOne(query,callback);
 }
 
+module.exports.Users.getTwitterUser = function(id,callback){
+    let query = {id:id};
+    schema.Member.findOne(query,callback);
+}
+
 // add the user to the database , on registration
 // tested
 module.exports.Member.addUser = function(newUser,callback){

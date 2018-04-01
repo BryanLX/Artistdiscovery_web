@@ -190,6 +190,8 @@ router.get('/user/:username',(req,res,next)=>{
 })
 
 
+
+
 // ============= FORMATTED PROFILE UPDATE !END! =========================
 
 
@@ -237,8 +239,7 @@ router.get('/eventinfo/:username',(req,res,next)=>{
 
 // ===================== FORMATTED EVENT !END! =========================
 router.get('/events', (req, res) => {
-  console.log('event aaaa')
-  res.status(111).send()
+
   db.Users.find({}).then((Users) => {
     response.data = Users;
     res.send(response);
@@ -246,6 +247,18 @@ router.get('/events', (req, res) => {
     res.status(400).send()
   })
 });
+
+
+router.get('/twitterUser/:id',(req,res)=>{
+    let id = req.params.id;
+    account.getTwitterUser(id,(err,user)=>{
+        if(err) return res.json({success:false,msg:`Error Finding User for ${id}`});
+        if(!user) return res.json({success:false,msg:`No Such User`});
+        response.data = user;
+        console.log(user);
+        res.send(response);
+    })
+})
 
 // router.get('/events/:id', (req, res) => {
 //   console.log('event aaaa')

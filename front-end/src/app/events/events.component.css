@@ -42,9 +42,15 @@ body {
  * Sidebar
  */
 
+
+table{
+  overflow-y:auto;
+}
+
 /* Hide for mobile, show later */
 .sidebar {
   display: none;
+  position: relative;
 
 
 }

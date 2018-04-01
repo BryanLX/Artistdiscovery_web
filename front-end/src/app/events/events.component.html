@@ -6,6 +6,7 @@
           <br><br>
           <h5 >Lanague</h5>
           <select class="selectpicker">
+          <option>Any</option>
           <option>English</option>
           <option>French</option>
           <option>Japense</option>
@@ -13,8 +14,8 @@
           <br><br>
           <h5 >Followers</h5>
           <select class="selectpicker">
-          <option>0-150</option>
-          <option>150-1000</option>
+          <option>0-200</option>
+          <option>200-1000</option>
           <option>1000+</option>
           </select>
           <br><br>
@@ -35,58 +36,66 @@
           <option>Create Time: from early to late</option>
           <option>Create Time: from late to early</option>
           </select>
-
             <br><br>
+            <h5 >Number of Result</h5>
+            <select class="selectpicker">
+            <option>100</option>
+            <option>200</option>
+          </select>
             <br><br>
             <br><br>
           <button type="button" class="btn btn-primary btn-lg btn-block">Apply Changes</button>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h2 ><span class="ion-monitor"></span> Twitter Monitor</h2>
-
+          <h1 ng-if="current_user!=null">{{current_user.name}}</h1>
           <div class="row placeholders">
             <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+              <img src="{{current_user.profile_image_url}}" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
               <h4>Label</h4>
               <span class="text-muted">Something else</span>
             </div>
             <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+              <img src="{{user[2].profile_image_url}}" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
               <h4>Label</h4>
               <span class="text-muted">Something else</span>
             </div>
             <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+              <img src="{{user[3].profile_image_url}}" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
               <h4>Label</h4>
               <span class="text-muted">Something else</span>
             </div>
             <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+              <img src="{{user[4].profile_image_url}}" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
               <h4>Label</h4>
               <span class="text-muted">Something else</span>
             </div>
           </div>
 
           <h2 class="sub-header">Artist list</h2>
-          <div class="table-responsive">
-            <table class="table table-striped" id="artistlist">
+          <div class="table-responsive" >
+            <table id="artistlist" style = "width:100%;">
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Username</th>
+                  <th></th>
+                  <th>Name</th>
                   <th>Followers</th>
                   <th>Growth</th>
                   <th>Contact Information</th>
+                  <th>Check</th>
                 </tr>
               </thead>
               <tbody>
-                <div *ngFor="let user of users">
+                <tr *ngFor="let user of users; let i = index">
+                  <td>  {{i}}</td>
+                  <td><img src="{{user.profile_image_url}}"  class="img-responsive" ></td>
                   <td> {{user.name}} </td>
-                  <td> {{user.name}} </td>
-                  <td> {{user.name}} </td>
-                  <td> {{user.name}} </td>
-                  <td> {{user.name}} </td>
-                </div>
+                  <td> {{user.followers_count}} </td>
+                  <td> {{user.friends_count}} </td>
+                  <td><a href="https://twitter.com/{{user.screen_name}}" target="_blank"> {{user.screen_name}} </a></td>
+                  <button type="button" (click)="select_user(i)" >Check</button>
+                </tr>
               </tbody>
             </table>
           </div>
@@ -104,7 +113,6 @@
               <tbody>
               </tbody>
             </table>
-
           </div>
         </div>
       </div>

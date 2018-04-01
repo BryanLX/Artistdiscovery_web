@@ -152,6 +152,16 @@ export class DataService {
   }
 
 
+  getTwitterUser(id){
+
+
+    let rval = this._http.get('/api/twitterUser/' + id)
+      .map(result => result.json().data);
+      return rval;
+
+
+  }
+
   getUserByUserName(username){
       let rval = this._http.get('/api/user/' + username)
         .map(result => result.json().data);

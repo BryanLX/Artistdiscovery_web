@@ -2,7 +2,7 @@
 
 
 ### 1. Description
-    This repo is a school project I have done for CSC 454 Business Software / CSC 491 Capstone Project. The purpose of this
+  This repo is a school project I have done for CSC 454 Business Software / CSC 491 Capstone Project. The purpose of this
   project is to find talented artists in twitter accounts and make a website for showing their information and ranking.
 
 ### 2. Technology Used

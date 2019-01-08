@@ -2,24 +2,24 @@
 
 
 ### 1. Description
-  This repo is a school project I have done for CSC 454 Business Software / CSC 491 Capstone Project. The purpose of this
+  *This repo is a school project I have done for CSC 454 Business Software / CSC 491 Capstone Project. The purpose of this
   project is to find talented artists in twitter accounts and make a website for showing their information and ranking.
 
 ### 2. Technology Used
-  Front-end: AngularJs ,html ,css ,javascript
-  Back-end: Python, mongodb
-  Other technologies: tweetpy, nltk, Googlecloud suite
+  *Front-end: AngularJs ,html ,css ,javascript
+  *Back-end: Python, mongodb
+  *Other technologies: tweetpy, nltk, Googlecloud suite
 
 ### 3. Demo
-  Starting page:
+  *Starting page:
   ![alt text](https://github.com/BryanLX/Artistdiscovery_web/blob/master/demo_pic/1.png)
-  Register page:
+  *Register page:
   ![alt text](https://github.com/BryanLX/Artistdiscovery_web/blob/master/demo_pic/2.png)
-  Log in page;
+  *Log in page;
   ![alt text](https://github.com/BryanLX/Artistdiscovery_web/blob/master/demo_pic/3.png)
-  Artist search page:
+  *Artist search page:
   ![alt text](https://github.com/BryanLX/Artistdiscovery_web/blob/master/demo_pic/4.png)
-  Artist detail page:
+  *Artist detail page:
   ![alt text](https://github.com/BryanLX/Artistdiscovery_web/blob/master/demo_pic/6.png)
 
 ### 4. More about the Project
